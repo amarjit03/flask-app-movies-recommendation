@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommendation System</h1>
+        <form id="recommendation-form" onsubmit="return getRecommendations(event)">
+            <label for="movie">Enter a movie name:</label>
+            <input type="text" id="movie" name="movie" required>
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        <div id="movie-details" class="movie-details" style="display: none;"></div>
+        <div id="spinner" class="spinner" style="display: none;"></div>
+        <div id="recommendations-list" class="recommendations-list"></div>
+    </div>
+
+    <script id="movies-data" type="application/json">{{ movies | tojson }}</script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
